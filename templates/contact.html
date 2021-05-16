@@ -1,0 +1,39 @@
+{% extends 'base.html' %} {% block content %}
+{% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-danger-{{ message.tags }} alert-dismissible fade show my-0" role="alert">
+          <div class="alert alert-success d-flex align-items-center" role="alert">
+  <svg class="bi flex-shrink-0 me-2" width="24" height="24"><use xlink:href="#check-circle-fill"/></svg>
+  <div>
+<strong> {{ message }} </strong>
+  </div>
+</div>
+                
+</div>
+           
+        {% endfor %}
+{% endif %}
+<br> <br>
+<H2 id="Leave_message"> Leave Us A Message</H2>
+    <form action="" method="post" >
+        {% csrf_token %}
+        <div="container"></div>
+        <div class="mb-3" >
+            <label for="Name_specific" class="form-label">Name</label>
+            <input type="text" class="form-control" name="name"id="name" required>
+        </div>
+        <div class="mb-3">
+            <label for="Email_specific" class="form-label">Email address</label>
+            <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com" required>
+        </div>
+        <div class="mb-3">
+            <label for="Mobile_specific" class="form-label">Mobile</label>
+            <input type="text" class="form-control" name="phone" id="phone" placeholder="Your 10 digit mobile number" maxlength="10" required>
+        </div>
+        <div class="mb-3">
+            <label for="Message_specific" class="form-label" >Message</label>
+            <textarea class="form-control" name="message" id="message" rows="7"></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </div>
+{% endblock content %}

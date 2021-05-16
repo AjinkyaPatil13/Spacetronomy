@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+      
+ {% block content %}
+<style>
+
+    
+    body {
+        font-family: "Roboto", sans-serif;
+        font-size: 18px;
+        background-color: #fdfdfd;
+    }
+  
+    .head_text{
+    color: black;
+  }
+    .card-body{
+    margin-left: 0;
+    }
+ 
+    #Welcome{
+    text-align: center;
+    color: #ffffb3;
+    }
+    #Subtitle{
+    text-align: right;
+    padding: 1em -3;
+    color: #ffffb3;
+    } 
+
+.inside-article a:hover{
+  text-decoration:underline;
+}
+
+
+</style>
+
+     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTURdLJ8_gGim3jnKh6OsFsQpXlB1F2XeV-A&usqp=CAU" class="d-block w-100" alt="..." id="imageforc">
+    </div>
+    <div class="carousel-item">
+         <img src="data:image/jpeg;base64,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" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbIMrwhjZzy4z_5QxWW4g_mYKJ1YT4or2eZA&usqp=CAU" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+            <div class="container">
+                <div class="row">
+      
+              <!-- Blog Entries Column -->
+              <div class="col-md-8 mt-3"  id="x">
+                    {% for post in post_list %}
+                <div class="card mb-4" >
+                  <div class="card-body">
+                    <h2 class="card-title">{{ post.title }}</h2>
+                    <p class="card-text text-muted h6" id="inside-article">{{ post.author }} | {{ post.created_on}} </p>
+
+                    <p class="card-text">{{post.content_1|slice:":200" }}</p>
+                    <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">Read More &rarr;</a>
+                  </div>
+                 
+                </div>
+                <hr>
+                {% endfor %}
+            </div>
+                {% block sidebar %}
+                {% include 'sidebar.html' %}
+                {% endblock sidebar %}
+            </div>
+        </div>
+{%endblock%}

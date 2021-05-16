@@ -1,0 +1,78 @@
+{% extends 'base.html' %} {% block content %}
+{% load crispy_forms_tags %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 card mb-4  mt-3 left  top">
+      <div class="card-body">
+        <h1>{% block title %} {{ post.title }} {% endblock title %}</h1>
+        <p class=" text-muted">{{ post.author }} | {{ post.created_on }}</p>
+{% if post.header_image %}
+    <img src="{{post.header_image.url}}" class="responsive">
+{% endif %}
+        <p class="card-text ">{{ post.content_1 | safe }}</p>
+{% if post.image_1 %}
+    <img src="{{post.image_1.url}}" class="responsive">
+{% endif %}
+{%if post.content_2 %}
+    <p class="card-text ">{{ post.content_2 | safe }}</p>
+{% endif %}
+{% if post.image_2 %}
+    <img src="{{post.image_2.url}}" class="responsive">
+{% endif %}
+{%if post.content_3 %}
+    <p class="card-text ">{{ post.content_3 | safe }}</p>
+{% endif %}
+{% if post.image_3 %}
+    <img src="{{post.image_3.url}}" class="responsive">
+{% endif %}
+{%if post.content_3 %}
+    <p class="card-text ">{{ post.content_4 | safe }}</p>
+{% endif %}
+      </div>
+    </div>
+    {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
+
+    <div class="col-md-8 card mb-4  mt-3 ">
+      <div class="card-body">
+        <!-- comments -->
+        {% with comments.count as total_comments %}
+        <h2>{{ total_comments }} comments</h2>
+
+        <p>
+          {% endwith %} {% for comment in comments %}
+        </p>
+
+        <div class="comments" style="padding: 10px;">
+          <p class="font-weight-bold">
+            {{ comment.name }}
+            <span class=" text-muted font-weight-normal">
+              {{ comment.created_on }}
+            </span>
+          </p>
+          {{ comment.body | linebreaks }}
+        </div>
+
+        {% endfor %}
+      </div>
+    </div>
+    <div class="col-md-8 card mb-4  mt-3 ">
+      <div class="card-body">
+        {% if new_comment %}
+        <div class="alert alert-success" role="alert">
+          Comment added!
+        </div>
+        {% else %}
+        <h3>Leave a comment</h3>
+        <form method="post" style="margin-top: 1.3em;">
+          {{ comment_form | crispy }}
+          {% csrf_token %}
+          <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
+        </form>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
