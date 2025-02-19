@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+      
+ {% block content %}
+<style>
+
+    
+    body {
+        font-family: "Poppins", sans-serif;
+        font-size: 18px;
+        background-color: #fdfdfd;
+    }
+
+    .image-container {
+    width: 100%;
+    height: 60vh; /* 60% of viewport height */
+    overflow: hidden; /* Prevents unwanted scrollbars */
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* Keeps the image looking natural */
+}
+
+    .head_text{
+    color: black;
+  }
+    .card-body{
+    margin-left: 0;
+    }
+ 
+    #Welcome{
+    text-align: center;
+    color: #ffffb3;
+    }
+    #Subtitle{
+    text-align: right;
+    padding: 1em -3;
+    color: #ffffb3;
+    } 
+
+.inside-article a:hover{
+  text-decoration:underline;
+}
+
+
+</style>
+
+<div class="image-container">
+  <img src="./media/images/space.avif" alt="Descriptive Text">
+</div>
+            <div class="container">
+                <div class="row">
+      
+              <!-- Blog Entries Column -->
+              <div class="col-md-8 mt-3"  id="x">
+                    {% for post in post_list %}
+                <div class="card mb-4" >
+                  <div class="card-body">
+                    <h2 class="card-title">{{ post.title }}</h2>
+                    <p class="card-text text-muted h6" id="inside-article">{{ post.author }} | {{ post.created_on}} </p>
+
+                    <p class="card-text">{{post.content_1|slice:":200" }}</p>
+                    <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">Read More &rarr;</a>
+                  </div>
+                 
+                </div>
+                <hr>
+                {% endfor %}
+            </div>
+                {% block sidebar %}
+                {% include 'sidebar.html' %}
+                {% endblock sidebar %}
+            </div>
+        </div>
+{%endblock%}
